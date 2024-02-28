@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src=
+        "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        </script>
+        
+
+        <style>
+        /* 002D62 */
+            body{
+                background-color: #dbdada;
+                /* background: linear-gradient(80deg, rgb(3, 0, 61) 0%, rgb(8, 0, 101) 45%, rgb(37, 0, 96) 100%);
+            */}
+
+             
+            form{
+                background-color: #002D62;
+                padding: 10px;
+                margin: 20px;
+                box-shadow: 0 1rem 2rem #00000066;
+            }
+
+            .tab {
+                padding: 10px;
+                background-color: #b4ddfe;
+                font-weight: bold;
+                color: #450808;
+                margin: 1em;
+                
+            }
+
+            div.layout {
+                padding-left: 5vw;
+            }
+
+            .seats{
+                border:2px solid black;
+                background-color: darkgrey;
+                padding: 5px;
+            }
+
+            #bseat {
+                border:2px solid black;
+                background-color: white;
+                padding: 5px;
+            }
+
+            #door {
+                border:1px solid black;
+            }
+
+            #confirm_book {
+                color: #b4ddfe;
+                padding:7px;
+                background-color: #292626f7;
+                margin-bottom: 10px;
+                margin-left: 10px;
+                
+            }
+
+            #confirm_book:hover{
+                background:#5b000047;
+                color:#000000;
+            }
+
+            p.seat_heading {
+                font-size:20px;
+                color: #f11111;
+            }
+
+            h2 {
+                color: blanchedalmond;
+            }
+            h3{
+                color: #ffffff;
+                
+            }
+            button{
+                font-weight: bold;
+            }
+
+                        
+            #menu-bar{
+            color:#fff;
+            border:.1rem solid #fff;
+            border-radius: .5rem;
+            font-size: 3rem;
+            padding:.5rem 1.2rem;
+            cursor: pointer;
+            display: none;
+            }
+        </style>
+    </head>
+    <body>
+        
+
+        <form id="bookingform">
+            <div class="tab">
+                <label>Source:</label>
+                <select>
+                    <option>Dwarka</option>
+                    <option>Jamnagar</option>
+                    <option>Morbi</option>
+                    <option>Rajkot</option>
+                    <option>Porbandar</option>
+                    <option>Junagadh</option>
+                    <option>Somnath</option>
+                    <option>Amreli</option>
+                    <option>Botad</option>
+                    
+                </select>
+                <p><label>Destination:</label>
+                <select>
+                    <option>Amreli</option>
+                    <option>Botad</option>
+                    <option>Dwarka</option>
+                    <option>Jamnagar</option>
+                    <option>Junagadh</option>
+                    <option>Morbi</option>
+                    <option>Porbandar</option>
+                    <option>Rajkot</option>                    
+                    <option>Somnath</option>
+                                        
+                </select>
+            </p>
+                <label for="jd">Journey Date:</label><p><input type="date" name="jd" required></p>
+                <label>Bus Type:</label>
+                <p>NON-AC<input type="radio" checked="true" id="bustype" name="bustype1" value="nonac">
+                    AC<input type="radio" id="bustype" name="bustype1" value="ac"></p>
+                <p>SEATER<input type="radio" checked="true" id="bustype" name="bustype2" value="seater">
+                    SLEEPER<input type="radio" id="bustype" name="bustype2" value="sleeper"></p>
+
+                <p><label>Choose Time:</label>
+                    <select>
+                        <option>05.45</option>
+                        <option>10.00</option>
+                        <option>13.05</option>
+                        <option>15.35</option>
+                        <option>17.20</option>
+                        <option>21.15</option>
+                        <option>23.55</option>                    
+                                           
+                    </select>
+                </p>
+            </div>
+<!-- seat selection done by the user. -->
+            <div class="tab" id="full_seat_layout">
+
+                <p class="seat_heading">Choose Your Seat</p>
+
+                <div class="layout">
+                <hr align="left" size="2" width="350px;">
+                
+                <section class="seat_layout">
+                    <button class="seats" disabled>9</button>
+                    <button class="seats" onclick="disablebtn(this)">8</button>
+                    <button class="seats" onclick="disablebtn(this)">7</button>
+                    <button class="seats" disabled>6</button>
+                    <button class="seats" onclick="disablebtn(this)">5</button>
+                    <button class="seats" onclick="disablebtn(this)">4</button>
+                    <button class="seats" onclick="disablebtn(this)">3</button>
+                    <button class="seats" onclick="disablebtn(this)">2</button>
+                    <button class="seats" onclick="disablebtn(this)">1</button>
+                    <b id="bseat">_</b>
+                    <b id="door" >Door</b>
+                </section>
+                <br>
+                <section class="seat_layout">
+                    <button class="seats" onclick="disablebtn(this)">18</button>
+                    <button class="seats" onclick="disablebtn(this)">17</button>
+                    <button class="seats" disabled>16</button>
+                    <button class="seats" onclick="disablebtn(this)">15</button>
+                    <button class="seats" onclick="disablebtn(this)">14</button>
+                    <button class="seats" onclick="disablebtn(this)">13</button>
+                    <button class="seats" onclick="disablebtn(this)">12</button>
+                    <button class="seats" disabled>11</button>
+                    <button class="seats" onclick="disablebtn(this)">10</button>
+                    
+                </section>
+                <section class="seat_layout">
+                    <button class="seats" onclick="disablebtn(this)">19</button>
+                    <button class="seats" onclick="disablebtn(this)">20</button>
+                    <button class="seats" disabled>21</button>
+                    <button class="seats" onclick="disablebtn(this)">22</button>
+                    <button class="seats" disabled>23</button>
+                    <button class="seats" onclick="disablebtn(this)">24</button>
+                    <button class="seats" onclick="disablebtn(this)">25</button>
+                    <button class="seats" onclick="disablebtn(this)">26</button>
+                    <button class="seats" onclick="disablebtn(this)">27</button>
+                    
+                </section>
+                <hr align="left" size="2" width="350px;">
+                <br><br>
+                </div>
+                <b class="seats">N</b><b>:Available Seat</b>
+                <br><br>
+                <button class="seats" disabled>N</button><b>:Already Booked</b>
+                
+                
+            </div>
+            
+            <div class="tab">
+                <label>First Name:</label><p><input name="fname" required></p>
+                <label>Middle Name:</label><p><input name="mname"></p>
+                <label>Last Name:</label><p><input name="lname"></p>
+
+            </div>
+            <div class="tab">
+                <label>Mobile Number:</label><p><input required></p>
+                <label>Email ID:</label><p><input></p>
+                <p><label>Gender:</label>
+                 Female<input type="radio" name="gender">
+                 Male<input type="radio" name="gender"></p>
+                <label for="age">Age: </label><input type="number" name="age">
+            </div>
+            <h2>For Payment</h2>
+            <div class="tab">
+                <p><label>CREDIT CARD NUMBER: </label><input required></p>
+                <label>CVV: </label required><input>
+                <p><label>EXPIRY DATE: </label>
+                <select required>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    
+                </select>
+                /<select required>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                    <option>2030</option>
+                </select>
+                <p><label>CARD HOLDER NAME: </label><input></p>
+                
+            </div>
+            <h3>Ticket Price:</h3>
+            <h3 id="tprice"></h3>
+
+            
+        </form>
+        <button id="confirm_book" type="submit" form="bookingform" onclick="alertmessage()" >Pay & Book</button>
+        
+        
+        
+        <script>
+            
+
+            
+
+
+            // //ticket total.
+
+            // let type1 = document.querySelector('input[name="bustype1"]');
+            // let type2 = document.querySelector('input[name="bustype2"]');
+            // let tp = document.getElementById("tprice");
+            
+            // let random = Math.random() + 1;
+            // if(random < 1.1){
+            //     random += 0.1;
+            // }
+            // let price;
+
+            // if(type1 == 'nonac' && type2 == 'seater'){
+            //     price = Math.floor(random * 150 );
+            // }else if(type1 == 'ac' && type2 == 'seater'){
+            //     price = Math.floor(random * 300 );
+            // }else if(type1 == 'nonac' && type2 == 'sleeper'){
+            //     price = Math.floor(random * 450 );
+            // }else if(type1 == 'ac' && type2 == 'sleeper'){
+            //     price = Math.floor(random * 600 );
+            // }
+            // tp.innerHTML = `${price} rupees`;
+
+            let tp = document.getElementById("tprice");
+            tp.innerHTML = `${Math.floor((1 + Math.random() ) * 250)} rupees`;
+
+            //seat selection
+            function disablebtn(e){
+                e.disabled = true;
+            }
+            //print the ticket.
+            function alertmessage(){
+                alert('Your booking is done.')
+                window.print();
+            }
+
+            
+        </script>
+    </body>
+</html>

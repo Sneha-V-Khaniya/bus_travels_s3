@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+
+        <p>Choose your preferred option</p>
+        
+        <input type="radio" name="contact" value="email"/>
+        
+        <label for="email">Email</label>
+        
+        <input type="radio" name="contact" value="phone"/>
+        
+        <label for="phone">Phone</label>
+        
+        <button onclick="handleClick()">Submit</button>
+        <label>Bus Type:</label>
+        <p>NON-AC<input type="radio" checked="true" id="bustype" name="bustype1" value="nonac">
+            AC<input type="radio" id="bustype" name="bustype1" value="ac"></p>
+        <p>SEATER<input type="radio" checked="true" id="bustype" name="bustype2" value="seater">
+            SLEEPER<input type="radio" id="bustype" onclick="change_layout()" name="bustype2" value="sleeper"></p>
+
+        <script>
+            let type1 = document.querySelector('input[name="bustype1"]');
+            let type2 = document.querySelector('input[name="bustype2"]');
+            let tp = document.getElementById("tprice");
+            
+            let random = Math.random() + 1;
+            if(random < 1.1){
+                random += 0.1;
+            }
+            let price;
+
+            if(type1 == 'nonac' && type2 == 'seater'){
+                price = Math.floor(random * 150 );
+            }else if(type1 == 'ac' && type2 == 'seater'){
+                price = Math.floor(random * 300 );
+            }else if(type1 == 'nonac' && type2 == 'sleeper'){
+                price = Math.floor(random * 450 );
+            }else if(type1 == 'ac' && type2 == 'sleeper'){
+                price = Math.floor(random * 600 );
+            }
+            
+
+            function handleClick(){
+                const radioButtons= document.querySelectorAll('input[name="contact"]');
+                let selectedValue;
+                for (const rb of radioButtons) {
+                    if (rb.checked) {
+                        selectedValue = rb.value;
+                        break;
+                    }
+                }
+                
+                if(selectedValue){
+                    alert(selectedValue);
+                }
+                else{
+                    alert("Please Select an option");
+                }
+            }
+            let random = Math.random() + 1;
+            document.write(random+" _ ");
+
+            if(random < 1.1){
+                random += 0.1;
+            }
+            document.write(random+" _ ");
+            
+            document.write(Math.floor(random * 150 )+" _ ");
+            document.write(Math.floor(random * 300 )+" _ ");
+            document.write(Math.floor(random * 450 )+" _ ");
+            document.write(Math.floor(random * 600 )+" _ ");
+            
+            document.write(price);
+        </script>
+        
+        
+
+</body>
+</html>
