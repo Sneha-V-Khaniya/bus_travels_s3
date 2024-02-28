@@ -1,4 +1,4 @@
-#Bus Travels
+# Bus Travels
 
 made using **HTML, CSS and Javascript**.
 
@@ -10,6 +10,6 @@ main pages:
 - review page
 
 > How to run the project?
-after making available this code in local computer,
+- after making available this code in local computer,
 just run or open index.html file.
 
